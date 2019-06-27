@@ -1,9 +1,9 @@
 import { CloudFunction } from "firebase-functions";
 
-import { Logger } from '../../util/logger/logger.interface';
-import { getLogger } from '../../util/logger.util';
+import { Logger } from '../util/logger/logger.interface';
+import { getLogger } from '../util/logger.util';
 
-import { Context } from '../../context/context.interface';
+import { Context } from '../context/context.interface';
 
 /**
  * Registrar.
@@ -17,19 +17,19 @@ export abstract class FunctionRegistrar<T, R>
 { 
   protected _logger: Logger;
 
-  constructor() {
-    this._logger = getLogger();
+  constructor() {           // Temporary Hack - Always do production logger on function registrar
+    this._logger = getLogger({ production: true });
   }
 
   /**
    * Action before execution of function. Registers the passed function as a cloudfunction.
    */
-  abstract register(func: (dataSnap, context) => Promise<R>): CloudFunction<any>;
+  abstract register(func: (dataSnap: any, context: Context) => Promise<R>): CloudFunction<any>;
 
   /**
    * Convert params of specific registrar into parameters tailored to FunctionHandler
    */
-  abstract before(dataSnap, context): { data: T, context: Context };
+  abstract before(dataSnap: any, context: Context): { data: T, context: Context };
 
   /**
    * Wrapper function that wraps a function handler in a cloudfunction of choice..

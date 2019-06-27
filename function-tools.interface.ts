@@ -5,5 +5,5 @@ import { AdminRepository } from "./data/repositories/admin-repository.model";
 
 export interface FunctionTools {
   Logger: Logger;
-  getRepository: <T extends IObject>(string) => AdminRepository<T>;
+  getRepository: <T extends IObject>(documentPath: string) => AdminRepository<T>;
 }

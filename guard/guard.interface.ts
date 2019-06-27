@@ -1,4 +1,4 @@
-import { Context } from "../../context/context.interface";
+import { Context } from "../context/context.interface";
 
 /**
  * The gaurd is a part of the function mechanism that checks if a certain condition is met, 

@@ -1,5 +1,6 @@
 import { FunctionRegistrar } from "../function-registrar.interface";
 import { FirestoreContext } from './context/firestore.context';
+import { Context } from "../../context/context.interface";
 
 /**
  * Firestore registrar. 
@@ -12,7 +13,7 @@ export abstract class FirestoreRegistrar<T, R> extends FunctionRegistrar<T, R>
    * @param documentPath - Path to document e.g. 'prospects/{prospectId}'. 
    *                       Can be more extensive path e.g. repository of subcollections.
    */
-  constructor(protected _documentPath) { super(); }
+  constructor(protected _documentPath: string) { super(); }
 
   /**
    * Convert params of onCreate to input for CloudHandler
@@ -39,7 +40,7 @@ export abstract class FirestoreRegistrar<T, R> extends FunctionRegistrar<T, R>
     return new Promise((_) => 'Error during execution. Fail gracefully.');
   }
 
-  after(result: R, _): any {
+  after(result: R, context: Context): any {
     return result;
   }
 

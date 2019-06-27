@@ -5,7 +5,7 @@ import { Context } from "./context.interface";
  * 
  * @param context Firebase EventContext - https://firebase.google.com/docs/reference/functions/functions.EventContext#.auth
  */
-export function createContext(context): Context
+export function createContext(context: any): Context
 {
   return {
     isAuthenticated: context.uid !== null,

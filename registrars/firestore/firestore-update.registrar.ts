@@ -14,9 +14,9 @@ export class FirestoreUpdateRegistrar<T, R> extends FirestoreRegistrar<T, R>
    * @param documentPath - Path to document e.g. 'prospects/{prospectId}'. 
    *                       Can be more extensive path e.g. repository of subcollections.
    */
-  constructor(documentPath,
-              protected _withMerge?: boolean,
-              protected _mergeName?: string) 
+  constructor(documentPath: string,
+              protected _withMerge: boolean = false,
+              protected _mergeName: string  = '') 
   {
     super(documentPath);
 
@@ -25,7 +25,7 @@ export class FirestoreUpdateRegistrar<T, R> extends FirestoreRegistrar<T, R>
       throw new Error(`Firestore Update Registrar compile error for documentPath ${documentPath}. Passed _withMerge as true but no _mergeName.`);
   }
 
-  register(func: (dataSnap, context) => Promise<R>): CloudFunction<any>
+  register(func: (dataSnap: any, context: any) => Promise<R>): CloudFunction<any>
   {
     return firestore.document(this._documentPath)
                     .onUpdate(func);
@@ -58,7 +58,7 @@ export class FirestoreUpdateRegistrar<T, R> extends FirestoreRegistrar<T, R>
 
   /** Prepares data to be merged with existing doc.s */
   _prepareMerge(data: R) {
-    const toMerge = {};
+    const toMerge : any = {};
     toMerge[this._mergeName] = data;
     return toMerge;
   }

@@ -73,9 +73,9 @@ export class AdminRepository<T extends IObject>
   }
 
   /** By default, Firebase does not store document id. We therefore merge documents with their id. */
-  private _mergeWithDocId(actions) : T[]
+  private _mergeWithDocId(actions: any) : T[]
   {
-    return actions.docs.map(a => {
+    return actions.docs.map((a: any) => {
       const data = <T> a.data();
             data.id = a.id;
       

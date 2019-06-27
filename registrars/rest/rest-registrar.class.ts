@@ -1,7 +1,7 @@
 import { FunctionRegistrar } from "../function-registrar.interface";
 import { CloudFunction, https } from 'firebase-functions';
 
-import { Context } from '../../../context/context.interface';
+import { Context } from "../../context/context.interface";
 
 /**
  * Firestore registrar. 
@@ -21,7 +21,7 @@ export class RestRegistrar<T, R> extends FunctionRegistrar<T, R>
     return { data: dataSnap, context };
   }
 
-  after(result: R, _): any {
+  after(result: R, _: any): any {
     return result;
   }
 

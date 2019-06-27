@@ -21,7 +21,7 @@ export function wrapGaurd<T, R>(func: (data: T, context: Context) => Promise<R>,
     logger.debug(() => `Executing guards of function ${name}.`);
 
     return _guardReducer(data, context, guards, true)
-              .then(result =>
+              .then((result: any) =>
                   _handleResult<T, R>(func, data, context, name, logger, result));
     
   }
@@ -43,17 +43,19 @@ export function _handleResult<T, R>(func: (data: T, context: Context) => Promise
 /** Simple implementation of a reducer that works with promises. 
  * Given a guard can be both synchronous as asynchronous, we lift every method up to a promise using promise.resolve.
 */
-function _guardReducer<T>(data: T, context: Context, guards: Guard<T>[], prev: boolean)
+function _guardReducer<T>(data: T, context: Context, guards: Guard<T>[], prev: boolean): Promise<boolean | T>
 {
   // If done or failed, return the final value
   if (!prev || guards.length === 0)
     return Promise.resolve(prev);
-  
-  const guard = guards.shift();
-  const check = guard.check(data, context);
+  else
+  {
+    const guard = guards.shift();
+    const check = guard != null && guard.check(data, context);
 
-          // Neutralises the issue that a guard can be both promise as value. Lift all to Promise Monad.
-  return Promise.resolve(check)
-                                                // We already know prev is true, else we would have returned by now
-                .then(c => _guardReducer(data, context, guards, c))
+            // Neutralises the issue that a guard can be both promise as value. Lift all to Promise Monad.
+    return Promise.resolve(check)
+                                                  // We already know prev is true, else we would have returned by now
+                  .then(c => _guardReducer(data, context, guards, c))
+  }
 }

@@ -5,7 +5,7 @@ import { ConsoleDebugLogger } from './logger/console-debug.logger';
 import { Environment } from '../environment.interface';
 
 
-let _logger = null;
+let _logger: any = null;
 
 /**
  * @returns The logger for the current config and environment.

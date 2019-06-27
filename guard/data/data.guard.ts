@@ -10,7 +10,7 @@ export class DataGuard<T> implements Guard<T>
 {
   constructor(private _needed: string[]) { }
 
-  check(data)
+  check(data: any)
   {
     return __reduce(this._needed,
                     // Test if the string need is a param of data.

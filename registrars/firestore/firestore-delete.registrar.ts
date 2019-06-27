@@ -12,9 +12,9 @@ export class FirestoreDeleteRegistrar<T, R> extends FirestoreRegistrar<T, R>
    * @param documentPath - Path to document e.g. 'prospects/{prospectId}'. 
    *                       Can be more extensive path e.g. repository of subcollections.
    */
-  constructor(documentPath) { super(documentPath); }
+  constructor(documentPath: string) { super(documentPath); }
 
-  register(func: (dataSnap, context) => Promise<R>): CloudFunction<any>
+  register(func: (dataSnap: any, context: any) => Promise<R>): CloudFunction<any>
   {
     return firestore.document(this._documentPath)
                     .onDelete(func);
