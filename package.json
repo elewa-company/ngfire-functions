@@ -1,6 +1,6 @@
 {
   "name": "ngfire-functions",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Framework to build SOLID firebase functions using clean abstractions and helpers.",
   "repository": {
     "type": "git",
