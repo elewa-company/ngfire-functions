@@ -1,6 +1,6 @@
 {
   "name": "ngfire-functions",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Framework to build SOLID firebase functions using clean abstractions and helpers.",
   "repository": {
     "type": "git",
@@ -8,13 +8,17 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "license": "ISC",
   "dependencies": {
     "@firebase/firestore-types": "^1.4.1",
     "firebase-admin": "^8.0.0",
-    "firebase-functions": "^2.3.1",
+    "firebase-functions": "^3.0.2",
+    "firebase-tools": "^6.8.0",
     "lodash": "^4.17.11",
-    "ngfire-firestore-query-builder": "^1.0.5",
+    "ngfire-firestore-query-builder": "^1.0.9",
     "ngfire-shared": "^1.0.4"
   },
   "engines": {
