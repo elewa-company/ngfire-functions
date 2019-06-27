@@ -1,5 +1,6 @@
 export * from './gc-function.class';
 export * from './function-handler.class';
+export * from './function-tools.interface';
 
 export * from './registrars';
 
