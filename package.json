@@ -1,11 +1,12 @@
 {
   "name": "ngfire-functions",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Framework to build SOLID firebase functions using clean abstractions and helpers.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elewa/ngfire-functions.git"
   },
+  "main": "index.js",
   "types": "dist/index.d.ts",
   "license": "ISC",
   "dependencies": {
