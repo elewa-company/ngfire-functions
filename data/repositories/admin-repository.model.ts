@@ -1,6 +1,6 @@
 import { FirebaseFirestore } from '@firebase/firestore-types'
 
-import { IObject } from 'ngfire-shared/db';
+import { IObject } from 'ngfire-shared';
 import { Query } from 'ngfire-firestore-query-builder';
 
 /**

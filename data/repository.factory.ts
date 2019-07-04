@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin';
 
-import { IObject } from 'ngfire-shared/db';
+import { IObject } from 'ngfire-shared';
 import { AdminRepository } from './repositories/admin-repository.model';
 
 let store: any;

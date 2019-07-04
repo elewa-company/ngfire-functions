@@ -1,6 +1,6 @@
 {
   "name": "ngfire-functions",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Framework to build SOLID firebase functions using clean abstractions and helpers.",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
     "dist"
   ],
   "license": "ISC",
-  "dependencies": {
+  "peerDependencies": {
     "@firebase/firestore-types": "^1.4.1",
     "firebase-admin": "^8.0.0",
     "firebase-functions": "^3.0.2",
